@@ -9,7 +9,6 @@
     "express": "^4.16.4",
     "express.js": "^1.0.0",
     "expressjs": "^1.0.1",
-    "node-pg-migrate": "^3.18.1",
     "pg": "^7.9.0"
   },
   "devDependencies": {},
