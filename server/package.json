@@ -1,0 +1,22 @@
+{
+  "name": "sesos-server",
+  "version": "1.0.0",
+  "description": "System Elektronicznego Sprawdzania Obecności Studentów",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "eslint": "^5.16.0",
+    "express": "^4.16.4",
+    "express.js": "^1.0.0",
+    "expressjs": "^1.0.1",
+    "node-pg-migrate": "^3.18.1",
+    "pg": "^7.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
