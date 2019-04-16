@@ -1,6 +1,11 @@
-var express = require('express');
-var server = express();
-var port = 3000;
+const express = require('express');
+const server = express();
+const port = 3000;
+
+//Routers
+const classroomRouter = require('./routers/classroomRouter');
+
+server.use('/classroom', classroomRouter);
 server.get('/', function (req, res){
 	res.send('Hello world');
 });
