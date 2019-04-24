@@ -14,6 +14,16 @@ module.exports = {
 			title: {
 				type: Sequelize.STRING
 			},
+			createdAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
+				default: new Date()
+			},
+			updatedAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
+				default: new Date()
+			}
 		});
 	},
 	down: (queryInterface, Sequelize) => {

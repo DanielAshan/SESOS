@@ -6,9 +6,13 @@ module.exports = {
     return queryInterface.bulkInsert('Classrooms', [{
       name: 'E3',
       faculty: 'WEEIA',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },{
       name: 'E4',
-      faculty: 'WEEIA'
+      faculty: 'WEEIA',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
 	},
 

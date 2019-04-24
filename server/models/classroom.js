@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
 	const Classroom = sequelize.define('Classroom', {
 		name: DataTypes.STRING,
@@ -9,3 +10,4 @@ module.exports = (sequelize, DataTypes) => {
 	};
 	return Classroom;
 };
+
