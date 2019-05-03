@@ -2,7 +2,6 @@ const express = require('express');
 const classroomRouter = express.Router();
 const { body, validationResult } = require('express-validator/check');
 
-
 var models = require('../models');
 
 classroomRouter.get('/', function(req, res) {
