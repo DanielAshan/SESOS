@@ -1,0 +1,31 @@
+<template>
+  <div id="app">
+    <div class="container">
+      <app-header></app-header>
+      <app-classroom></app-classroom> 
+    </div>
+  </div>
+</template>
+
+<script>
+import Header from "./components/Shared/Header";
+import ClassroomList from "./components/Classroom/ClassroomList";
+export default {
+  name: "app",
+  components: {
+    "app-header": Header,
+    "app-classroom": ClassroomList
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
