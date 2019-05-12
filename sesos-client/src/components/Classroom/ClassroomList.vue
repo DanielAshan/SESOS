@@ -26,20 +26,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "ClassroomList",
   data: function() {
     return {
-      classrooms: [
-        {
-          name: "E3"
-        },
-        {
-          name: "E4"
-        }
-      ]
+      classrooms: []
     };
+  },
+  methods: {
+    getClassrooms() {
+      axios.get('/classroom').then(res => {
+        const data = res.data;
+        data.forEach(element => {
+          this.classrooms.push(element);
+        });
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+  },
+  created () {
+    this.getClassrooms();
   }
+
 };
 </script>
 
