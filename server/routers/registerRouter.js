@@ -26,8 +26,8 @@ registerRouter.post('/', [
 		classroom_id: req.body.classroom_id,
 		createdAt: new Date(),
 		updatedAt: new Date()
-	}).then( newel => {
-		res.json(newel);
+	}).then( newidrecord => {
+		res.json(newidrecord);
 	}, error => {
 		res.json(error);
 	});
