@@ -52,12 +52,7 @@ userRouter.post('/', [
 				createUser(req, res);
 			});
 		});
-	});
-	
-	
-	
-	
-			
+	});			
 });
 
 function createUser(req, res) {
