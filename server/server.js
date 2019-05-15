@@ -9,8 +9,12 @@ const port = 3000;
 
 //Routers
 const classroomRouter = require('./routers/classroomRouter');
+const userRouter = require('./routers/userRouter');
+const registerRouter = require('./routers/registerRouter');
 
 server.use('/classroom', classroomRouter);
+server.use('/user', userRouter);
+server.use('/register', registerRouter);
 server.get('/', function (req, res){
 	res.send('Hello world');
 });
