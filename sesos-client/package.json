@@ -10,7 +10,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "jquery": "^3.4.1",
+    "vue": "^2.6.10",
+    "vuejs-datetimepicker": "^1.1.11",
+    "zebra_datepicker": "^1.9.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

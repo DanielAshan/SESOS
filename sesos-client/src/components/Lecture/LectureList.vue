@@ -29,32 +29,75 @@
           </tr>
         </tbody>
       </table>
+      <hr>
+      <h5 class="card-title">Create lecture</h5>
+      <form @submit.prevent="createLecture">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" v-model="lecture.name">
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start date</label>
+          <datetime format="YYYY-MM-DD H:i" v-model="lecture.startDate"></datetime>
+        </div>
+        <div class="form-group">
+          <label for="endDate">End date</label>
+          <datetime format="YYYY-MM-DD H:i" v-model="lecture.endDate"></datetime>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import datetime from 'vuejs-datetimepicker'
 export default {
   name: "LectureList",
+  components: {
+    datetime
+  },
   data: function() {
     return {
-      lectures: [
-        {
-          name: "Lecture 1",
-          startDate: new Date(),
-          endDate: new Date(),
-          lecturerId: 1,
-          classroomId: 1,
-        },
-        {
-          name: "Lecture 2",
-          startDate: new Date(),
-          endDate: new Date(),
-          lecturerId: 2,
-          classroomId: 2,
-        }
-      ]
+      lectures: [],
+      lecture: {
+        name : 'Testowe zajecia',
+        startDate: '',
+        endDate: '',
+      }
     };
+  },
+  methods: {
+    getLectureList() {
+      axios.get('/lecture').then(res => {
+        const data = res.data;
+        data.forEach(element => {
+          this.lectures.push(element);
+        });
+      }).catch(error => {
+        console.log(error);
+      })
+    },
+    createLecture(event) {
+      // console.log(this.lecture);
+      axios.post('/lecture', this.lecture).then(res => {
+        console.log(res);
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+  },
+  created() {
+    this.getLectureList();
+  },
+  mounted() {
+    // var $ = jquery;
+    // global.jQuery = jquery;
+    // console.log(jquery);
+    // $('#startDate').Zebra_DatePicker({
+    //   format: 'Y-m-d H:i'
+    // });
   }
 };
 </script>
