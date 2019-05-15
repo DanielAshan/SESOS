@@ -33,6 +33,34 @@ userRouter.post('/', [
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
+	var existingUsers = [];
+	models.User.findAll({where: { university_id: req.body.university_id}}).then( users => {
+		users.forEach(element => {
+			existingUsers.push(element);
+		});
+		models.User.findAll({where: { email: req.body.email}}).then( users => {
+			users.forEach(element => {
+				existingUsers.push(element);
+			});
+			models.User.findAll({where: { els_id: req.body.els_id}}).then( users => {
+				users.forEach(element => {
+					existingUsers.push(element);
+				});
+				if (existingUsers.length > 0) {
+					return res.status(422).json({ error: 'User already exists' });
+				}
+				createUser(req, res);
+			});
+		});
+	});
+	
+	
+	
+	
+			
+});
+
+function createUser(req, res) {
 	models.User.create({
 		email: req.body.email,
 		university_id: req.body.university_id,
@@ -42,11 +70,15 @@ userRouter.post('/', [
 		last_name: req.body.last_name,
 		createdAt: new Date(),
 		updatedAt: new Date()
-	}).then( classroom => {
-		res.json(classroom);
+	}).then( user => {
+		models.NewIDRecord.findAll({ where: {els_id: req.body.els_id}}).then( newidrecords => {
+			newidrecords.forEach(newidrecord => {
+				newidrecord.destroy();
+			});
+			res.json(user);
+		});
 	}, error => {
 		res.json(error);
 	});
-		
-});
+}
 module.exports = userRouter;

@@ -4,9 +4,6 @@ const { body, validationResult } = require('express-validator/check');
 
 var models = require('../models');
 
-function findById (classroom) {
-
-}
 registerRouter.get('/', function (req, res) {
 	var response = [];
 	models.NewIDRecord.findAll().then( newIDRecords => {
@@ -44,6 +41,19 @@ registerRouter.post('/', [
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
+	var existingNewIDRecords = [];	
+	models.NewIDRecord.findAll({ where: {els_id: req.body.els_id}}).then( newidrecords => {
+		newidrecords.forEach(newidrecord => {
+			existingNewIDRecords.push(newidrecord);
+		});
+		if (existingNewIDRecords.length > 0) {
+			return res.status(422).json({ error: 'Record already exists' });
+		}
+		createNewIDRecord(req, res);
+	});
+});
+
+function createNewIDRecord (req, res) {
 	models.Classroom.findOne({ where: {name: req.body.classroom}}).then( classroom => {
 		if (classroom != null) {
 			models.NewIDRecord.create({
@@ -60,6 +70,5 @@ registerRouter.post('/', [
 			res.json('Classroom not found');
 		}
 	});		
-});
-
+}
 module.exports = registerRouter;
