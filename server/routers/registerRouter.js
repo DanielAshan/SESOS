@@ -37,6 +37,7 @@ registerRouter.post('/', [
 		.isString()
 		.withMessage('Classrom must be string'),
 ], function(req, res) {
+	console.log('Rejestracja');
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });

@@ -39,6 +39,7 @@ lectureRouter.post('/', [
 function createLecture(req, res) {
 	models.Lecture.create({
 		name: req.body.name,
+		classroom_id: req.body.classroom_id,
 		startDate: moment(req.body.startDate).format('YYYY-MM-DD HH:mm:ss'),
 		endDate: moment(req.body.endDate).format('YYYY-MM-DD HH:mm:ss'),
 		createdAt: new Date(),

@@ -16,12 +16,12 @@
         </thead>
         <tbody>
           <tr v-for="(lecture, index) in lectures" v-bind:key="lecture.name">
-            <th scope="row">{{ index }}</th>
+            <th scope="row">{{ lecture.id }}</th>
             <td>{{ lecture.name }}</td>
             <td>{{ lecture.startDate }}</td>
             <td>{{ lecture.endDate }}</td>
-            <td>{{ lecture.lecturerId }}</td>
-            <td>{{ lecture.classroomId }}</td>
+            <td>{{ lecture.lecturer_id }}</td>
+            <td>{{ lecture.classroom_id }}</td>
             <td>
               <button type="button" class="btn btn-info">Edit</button>
               <button type="button" class="btn btn-danger">Remove</button>
@@ -32,6 +32,10 @@
       <hr>
       <h5 class="card-title">Create lecture</h5>
       <form @submit.prevent="createLecture">
+        <div class="form-group">
+          <label for="classroom_id">Classroom id</label>
+          <input type="text" class="form-control" id="classroom_id" v-model="lecture.classroom_id">
+        </div>
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" v-model="lecture.name">
@@ -65,6 +69,7 @@ export default {
         name : 'Testowe zajecia',
         startDate: '',
         endDate: '',
+        classroom_id: 1
       }
     };
   },

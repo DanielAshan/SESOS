@@ -6,6 +6,7 @@
       <app-classroom></app-classroom> 
       <app-lecture></app-lecture>
       <app-user></app-user>
+      <app-attendance></app-attendance>
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@
 import Header from "./components/Shared/Header";
 import ClassroomList from "./components/Classroom/ClassroomList";
 import LectureList from "./components/Lecture/LectureList";
+import AttendanceList from "./components/Lecture/AttendanceList"
 import UserList from "./components/User/UserList";
 import UserRegister from "./components/User/UserRegister"
 export default {
@@ -23,7 +25,8 @@ export default {
     "app-classroom": ClassroomList,
     "app-lecture": LectureList,
     "app-user": UserList,
-    "app-register": UserRegister
+    "app-register": UserRegister,
+    "app-attendance": AttendanceList
   }
 };
 </script>

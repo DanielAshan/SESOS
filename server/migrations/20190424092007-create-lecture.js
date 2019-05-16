@@ -17,10 +17,10 @@ module.exports = {
 			endDate: {
 				type: Sequelize.DATE
 			},
-			lecturerId: {
+			lecturer_id: {
 				type: Sequelize.INTEGER
 			},
-			classroomId: {
+			classroom_id: {
 				type: Sequelize.INTEGER
 			},
 			createdAt: {
